@@ -1,0 +1,188 @@
+@extends('layouts.admin.app')
+
+@section('content')
+    <div class="breadcrumb">
+        <a href="{{ route('admin.dashboard') }}">Dashboard</a>
+        <span>›</span>
+        <a href="{{ route('admin.siswa.index') }}">Siswa</a>
+        <span>›</span>
+        <strong>Tambah</strong>
+    </div>
+
+    <h2 class="page-title">Tambah Siswa Baru</h2>
+
+    <form method="POST" action="{{ route('admin.siswa.store') }}" class="form-card" id="formSiswa">
+        @csrf
+
+        <div class="form-group">
+            <label>
+                <span class="label-icon">👤</span>
+                Nama Anak
+            </label>
+            <input name="nama_anak" required placeholder="Masukkan nama anak">
+        </div>
+
+        <div class="form-group">
+            <label>
+                <span class="label-icon">🔢</span>
+                No Induk
+            </label>
+            <input name="no_induk" placeholder="Nomor induk siswa (opsional)">
+        </div>
+
+        <div class="form-group">
+            <label>
+                <span class="label-icon">👨‍👩‍👧</span>
+                Nama Orangtua
+            </label>
+            <input name="nama_orangtua" required placeholder="Masukkan nama orangtua">
+        </div>
+
+        <div class="form-group">
+            <label>
+                <span class="label-icon">📱</span>
+                No WhatsApp
+            </label>
+            <input name="wa" required placeholder="08xxxxxxxxxx">
+        </div>
+
+        <div class="form-group">
+            <label>
+                <span class="label-icon">✉️</span>
+                Email
+            </label>
+            <input type="email" name="email" placeholder="email@example.com (opsional)">
+        </div>
+
+        <div class="form-group">
+            <label>
+                <span class="label-icon">📝</span>
+                Keterangan
+            </label>
+            <textarea name="keterangan" rows="3" placeholder="Catatan tambahan (opsional)"></textarea>
+        </div>
+
+        <div class="form-action">
+            <a href="{{ route('admin.siswa.index') }}" class="btn-secondary">
+                Batal
+            </a>
+            <button type="submit" class="btn-primary">
+                <span>💾</span>
+                Simpan Data
+            </button>
+        </div>
+    </form>
+
+    <style>
+        .form-card {
+            max-width: 560px;
+            background: #fff;
+            padding: 32px;
+            border-radius: 20px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, .08);
+            margin: 24px auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #374151;
+        }
+
+        .label-icon {
+            font-size: 18px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border-radius: 12px;
+            border: 2px solid #e5e7eb;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #800000;
+            box-shadow: 0 0 0 4px rgba(128, 0, 0, .1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .form-action {
+            display: flex;
+            gap: 12px;
+            margin-top: 28px;
+        }
+
+        .btn-primary {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 24px;
+            border-radius: 12px;
+            border: none;
+            background: linear-gradient(135deg, #800000 0%, #b30000 100%);
+            color: #fff;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(128, 0, 0, .3);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(128, 0, 0, .4);
+        }
+
+        .btn-secondary {
+            padding: 14px 24px;
+            border-radius: 12px;
+            background: #f3f4f6;
+            color: #6b7280;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: #e5e7eb;
+            color: #374151;
+        }
+
+        @media (max-width: 768px) {
+            .form-card {
+                padding: 24px;
+            }
+        }
+    </style>
+
+    <script>
+        anime({
+            targets: '#formSiswa',
+            opacity: [0, 1],
+            translateY: [20, 0],
+            duration: 600,
+            easing: 'easeOutCubic'
+        });
+    </script>
+@endsection

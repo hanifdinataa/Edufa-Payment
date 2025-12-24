@@ -1,0 +1,26 @@
+{{-- resources/views/layouts/admin/header.blade.php --}}
+<header style="background:#800000;position:sticky;top:0;z-index:100">
+    <nav style="max-width:1200px;margin:auto;padding:14px 20px;display:flex;align-items:center">
+        <div id="adminMenu" style="display:flex;gap:16px;align-items:center">
+            @auth
+                @if(auth()->user()->role === 'CABANG')
+                    <a href="{{ route('admin.dashboard') }}" style="color:white">Dashboard</a>
+                    <a href="{{ route('admin.siswa.index') }}" style="color:white">Siswa</a>
+                    <a href="{{ route('admin.invoice.index') }}" style="color:white">Invoice</a>
+                @endif
+
+                @if(auth()->user()->role === 'CENTRE')
+                    <a href="{{ route('centre.dashboard') }}" style="color:white">Dashboard</a>
+                    <a href="{{ route('centre.laporan.index') }}" style="color:white">Cabang</a>
+                @endif
+            @endauth
+        </div>
+
+        <form method="POST" action="{{ route('logout') }}" style="margin-left:auto">
+            @csrf
+            <button style="background:none;border:1px solid #fff;color:#fff;padding:6px 14px;border-radius:6px">
+                Logout
+            </button>
+        </form>
+    </nav>
+</header>
