@@ -1,3 +1,4 @@
+{{-- resources/views/layouts/admin/sidebar.blade.php --}}
 <aside class="sidebar">
 
     @php
@@ -10,42 +11,54 @@
         {{-- SIDEBAR CENTRE --}}
         {{-- ===================== --}}
         @if ($isCentre)
-
+            <a href="{{ route('centre.cabang.index') }}"
+                class="{{ request()->routeIs('centre.cabang.*') ? 'active' : '' }}">
+                <span class="menu-icon">🏢</span>
+                <span>Management Cabang</span>
+            </a>
             <a href="{{ route('centre.dashboard') }}"
-               class="{{ request()->routeIs('centre.dashboard') ? 'active' : '' }}">
+                class="{{ request()->routeIs('centre.dashboard') ? 'active' : '' }}">
                 <span class="menu-icon">🏠</span>
                 <span>Beranda</span>
             </a>
 
             <a href="{{ route('centre.laporan.index') }}"
-               class="{{ request()->routeIs('centre.laporan.*') ? 'active' : '' }}">
+                class="{{ request()->routeIs('centre.laporan.*') ? 'active' : '' }}">
                 <span class="menu-icon">📑</span>
                 <span>Laporan Cabang</span>
             </a>
+            <a href="{{ route('centre.siswa.index') }}"
+                class="{{ request()->routeIs('centre.siswa.*') ? 'active' : '' }}">
+                <span class="menu-icon">👨‍🎓</span>
+                <span>List Siswa</span>
+            </a>
+            <a href="{{ route('centre.payroll.index') }}"
+                class="{{ request()->routeIs('centre.payroll.*') ? 'active' : '' }}">
+                <span class="menu-icon">💰</span>
+                <span>Payroll</span>
+            </a>
 
-        {{-- ===================== --}}
-        {{-- SIDEBAR ADMIN --}}
-        {{-- ===================== --}}
+            {{-- ===================== --}}
+            {{-- SIDEBAR ADMIN --}}
+            {{-- ===================== --}}
         @else
-
             <a href="{{ route('admin.dashboard') }}"
-               class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
+                class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
                 <span class="menu-icon">📊</span>
                 <span>Dashboard</span>
             </a>
 
             <a href="{{ route('admin.siswa.index') }}"
-               class="{{ request()->routeIs('admin.siswa.*') ? 'active' : '' }}">
+                class="{{ request()->routeIs('admin.siswa.*') ? 'active' : '' }}">
                 <span class="menu-icon">👨‍🎓</span>
                 <span>Siswa</span>
             </a>
 
             <a href="{{ route('admin.invoice.index') }}"
-               class="{{ request()->routeIs('admin.invoice.*') ? 'active' : '' }}">
+                class="{{ request()->routeIs('admin.invoice.*') ? 'active' : '' }}">
                 <span class="menu-icon">🧾</span>
                 <span>Invoice</span>
             </a>
-
         @endif
 
     </nav>

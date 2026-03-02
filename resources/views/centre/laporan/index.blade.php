@@ -1,5 +1,6 @@
+{{-- resources/views/centre/laporan/index.blade.php --}}
 @extends('layouts.admin.app')
-
+ 
 @section('content')
 
 <div class="breadcrumb">

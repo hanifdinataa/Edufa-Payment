@@ -1,3 +1,6 @@
+{{-- resources/views/admin/invoice/edit.blade.php --}}
+
+
 @extends('layouts.admin.app')
 
 @section('content')

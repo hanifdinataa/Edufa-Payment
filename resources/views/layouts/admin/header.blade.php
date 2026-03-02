@@ -1,3 +1,4 @@
+{{-- resources/views/layouts/admin/header.blade.php --}}
 @php
     $isCentre = request()->routeIs('centre.*');
 @endphp

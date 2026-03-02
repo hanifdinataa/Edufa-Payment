@@ -1,6 +1,5 @@
 <?php
 // app/Http/Controllers/Admin/InvoiceController.php
-
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;

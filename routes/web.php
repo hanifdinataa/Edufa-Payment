@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\SiswaController;
 use App\Http\Controllers\Admin\InvoiceController;
 use App\Http\Controllers\Centre\CentreDashboardController;
+use App\Http\Controllers\Centre\CentrePayrollController;
 use App\Http\Controllers\Centre\CentreReportController;
 use App\Http\Controllers\Frontend\PaymentController;
 
@@ -19,7 +20,7 @@ Route::post(
 | AUTH
 |--------------------------------------------------------------------------
 */
-Route::get('/', fn () => redirect('/login'));
+Route::get('/', fn() => redirect('/login'));
 
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.process');
@@ -40,7 +41,7 @@ use App\Http\Controllers\Webhook\MidtransWebhookController;
 Route::post('/webhook/midtrans', [MidtransWebhookController::class, 'handle'])
     ->name('webhook.midtrans');
 
-    Route::post('/_dev/force-paid/{invoiceCode}', [PaymentController::class, 'forcePaid']);
+Route::post('/_dev/force-paid/{invoiceCode}', [PaymentController::class, 'forcePaid']);
 
 /*
 |--------------------------------------------------------------------------
@@ -86,6 +87,19 @@ Route::middleware(['auth', 'role:CENTRE'])
 
         Route::get('/laporan/{cabang}', [CentreReportController::class, 'detail'])
             ->name('laporan.detail');
+        Route::get('/payroll', [CentrePayrollController::class, 'index'])
+            ->name('payroll.index');
+
+        Route::get('/payroll/create', [CentrePayrollController::class, 'create'])
+            ->name('payroll.create');
+
+        Route::post('/payroll', [CentrePayrollController::class, 'store'])
+            ->name('payroll.store');
+        Route::resource('cabang', \App\Http\Controllers\Centre\CabangController::class);
+        Route::get('/siswa', [\App\Http\Controllers\Centre\CentreSiswaController::class, 'index'])
+            ->name('siswa.index');
+            Route::resource('payroll', \App\Http\Controllers\Centre\CentrePayrollController::class)
+    ->except(['show']);
     });
 
 //     Route::get('/pay/{invoice_code}', [PaymentController::class, 'show'])

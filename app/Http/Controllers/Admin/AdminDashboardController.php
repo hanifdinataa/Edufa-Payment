@@ -1,5 +1,5 @@
 <?php
-
+/// Controller/Admin/AdminDashboardController.php
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;

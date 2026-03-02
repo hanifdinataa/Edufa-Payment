@@ -1,3 +1,4 @@
+{{-- resources/views/payment/not-found.blade.php --}}
 @extends('layouts.frontend.app')
 
 @section('content')

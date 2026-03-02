@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+{{-- views/auth/login.blade.php --}}
+!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">

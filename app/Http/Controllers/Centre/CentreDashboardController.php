@@ -1,5 +1,5 @@
 <?php
-
+// app/Http/Controllers/Centre/CentreDashboardController.php
 namespace App\Http\Controllers\Centre;
 
 use App\Http\Controllers\Controller;
